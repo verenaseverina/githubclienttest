@@ -1,0 +1,39 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" *ngIf="paginationLink.first">
+      <a class="page-link page-first" [href]="paginationLink.first.url" (click)="onClick($event, paginationLink.first)">
+        First
+      </a>
+    </li>
+    <li class="page-item" *ngIf="paginationLink.prev">
+      <a class="page-link page-prev" [href]="paginationLink.prev.url" (click)="onClick($event, paginationLink.prev)">
+        Prev
+      </a>
+    </li>
+    <li class="page-item" *ngIf="paginationLink.prev">
+      <a class="page-link page-prev" [href]="paginationLink.prev.url" (click)="onClick($event, paginationLink.prev)">
+        {{paginationLink.prev.page}}
+      </a>
+    </li>
+    <li class="page-item active" *ngIf="currentPageNumber > 0">
+      <a class="page-link page-current">
+        {{currentPageNumber}}
+      </a>
+    </li>
+    <li class="page-item" *ngIf="paginationLink.next">
+      <a class="page-link page-next" [href]="paginationLink.next.url" (click)="onClick($event, paginationLink.next)">
+        {{paginationLink.next.page}}
+      </a>
+    </li>
+    <li class="page-item" *ngIf="paginationLink.next">
+      <a class="page-link page-next" [href]="paginationLink.next.url" (click)="onClick($event, paginationLink.next)">
+        Next
+      </a>
+    </li>
+    <li class="page-item" *ngIf="paginationLink.last">
+      <a class="page-link page-last" [href]="paginationLink.last.url" (click)="onClick($event, paginationLink.last)">
+        Last
+      </a>
+    </li>
+  </ul>
+</nav>

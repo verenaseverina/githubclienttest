@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{ userList?.avatar_url }}" class="img-thumbnail rounded-circle" alt="..." />
+    </div>
+    <div class="col-md-8 userInfo text-left">
+      <h3>{{ userList?.login }}</h3>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Repositories:
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
+          <div class="dropdown-item"  *ngFor="let repo of listRepo">
+            <a href="user/{{repo?.full_name}}"> {{ repo?.name }} </a>
+          </div>
+        </div>
+      </div>
+      <p>E-mail: {{ individu?.email }} </p>
+      <p>Following:  {{ individu?.following }} </p>
+      <p>Followers:  {{ individu?.followers }} </p>
+    </div>
+  </div>
+</div> <!-- /end of card -->

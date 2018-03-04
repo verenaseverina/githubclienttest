@@ -4,10 +4,14 @@ html, body, .container, .row {
 
 .col-md-6 {
 	display: flex;
-  	align-items: center;
-  	width: 100%;
+	align-items: center;
+	width: 100%;
 }
 
 form {
+	width: 100%;
+}
+
+app-search {
 	width: 100%;
 }

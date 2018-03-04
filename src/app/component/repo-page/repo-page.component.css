@@ -1,0 +1,51 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+.container-fluid {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+header {
+	/* background-color: #DCDCDC; */
+	height: 12%;
+	margin-bottom: 1%;
+}
+
+#repo-name {
+	margin: auto;
+}
+
+header .row {
+	height: 100%;
+}
+
+.card-block .row {
+	width: 100%;
+	margin: 0px;
+}
+
+.block-item {
+	background-color: #EFEFEFEF;
+	padding: 2% 3%;
+}
+
+header .col-md-6 {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.repoStats p {
+	text-align: center;
+	margin: auto;
+}
+
+app-search {
+	width: 80%;
+	height: 100%;
+	padding: 1rem;
+}

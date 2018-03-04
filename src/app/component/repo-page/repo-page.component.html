@@ -1,0 +1,201 @@
+<header>
+  <div class="row">
+    <div class="col-md-6">
+      <app-search
+        [search]="queryString"
+        example="e.g. vue"
+        (query-change)="onSearchFormChange($event)" >
+      </app-search>
+    </div>
+    <div id="repo-name" class="col-md-6">
+      <h1> {{ repoItem?.name }} </h1> <!-- bisa diganti jadi nama repo-->
+    </div>
+  </div>
+</header>
+
+<hr />
+<div class="container-fluid">
+
+  <div class="row repositoryInfo">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-12">
+          <p>{{ repoItem?.description }}</p>
+        </div>
+        <div class="col-md-12 repoStats">
+          <div class="row">
+            <div class="col-md-3">
+              <p>Forks: {{ repoItem?.forks }}</p>
+            </div>
+            <div class="col-md-3">
+              <p>Stars: {{ repoItem?.stargazers_count }} </p>
+            </div>
+            <div class="col-md-3">
+              <p>Watchers: {{ repoItem?.watchers }}</p>
+            </div>
+            <div class="col-md-3">
+              <p>Issue Count: {{ repoItem?.open_issues }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+  </div> <!-- /end of repositoryInfo -->
+
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <div id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" href="#file" aria-expanded="true" aria-controls="file">
+                File
+              </a>
+            </h5>
+          </div>
+      
+          <div id="file" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+                <div class="row block-item">
+                  <div class="col-md-12">
+                    <div *ngFor="let fl of file">
+                      <a href={{fl?.html_url}}>
+                        <h5>{{ fl?.name }}</h5>
+                      </a>
+                      <hr />
+                    </div>
+                  </div>
+                </div> <!-- /end of files -->
+            </div>
+          </div>
+        </div>  <!-- /end of card -->
+    
+        <div class="card">
+          <div class="card-header" role="tab" id="headingTwo">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" href="#commit" aria-expanded="false" aria-controls="commit">
+                Commits
+              </a>
+            </h5>
+          </div>
+      
+          <div id="commit" class="collapse show" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="card-block">
+                <div class="row block-item">
+                  <div class="col-md-12">
+                    <div *ngFor="let cm of commit">
+                      <div class="oneCommit">
+                        <a href={{cm?.html_url}}>
+                          <h5>{{ cm?.message }}</h5>
+                        </a>
+                        <p> {{ cm?.committer.name }} commited {{ cm?.committer.date }}</p>
+                        <hr />
+                      </div>
+                    </div>
+                  </div>       
+                </div> <!-- /end of commits -->
+            </div>
+          </div>
+        </div>  <!-- /end of card -->
+    
+        <div class="card">
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" href="#branch" aria-expanded="false" aria-controls="branch">
+                XX Branch
+              </a>
+            </h5>
+          </div>
+      
+          <div id="branch" class="collapse show" role="tabpanel" aria-labelledby="headingThree">
+            <div class="card-block">
+                <div class="row block-item">
+                  <div class="col-md-12">
+                    <div *ngFor="let br of branch">
+                      <h5>{{ br?.name }}</h5>
+                      <hr />
+                    </div>
+                  </div>
+                </div> <!-- /end of branch -->
+            </div>
+          </div>
+        </div>  <!-- /end of card -->
+    
+        <div class="card">
+          <div class="card-header" role="tab" id="headingFour">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion" href="#contributor" aria-expanded="false" aria-controls="contributor">
+                  Contributors
+              </a>
+            </h5>
+          </div>
+      
+          <div id="contributor" class="collapse show" role="tabpanel" aria-labelledby="headingFour">
+            <div class="card-block">
+              <div class="row block-item">
+                <div class="col-md-12">
+                  <div *ngFor="let ct of contributor">
+                    <a href={{ct?.contributor.html_url}}>
+                      <h5>{{ ct?.contributor.login }}</h5>
+                    </a>
+                    <hr />
+                  </div>
+                </div>
+              </div> <!-- /end of contributors -->
+            </div>
+          </div>
+        </div>  <!-- /end of card -->
+      </div>
+
+      <div class="card">
+        <div class="card-header" role="tab" id="headingFive">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#issues" aria-expanded="false" aria-controls="issues">
+                Issues
+            </a>
+          </h5>
+        </div>
+    
+        <div id="issues" class="collapse show" role="tabpanel" aria-labelledby="headingFive">
+          <div class="card-block">
+            <div class="row block-item">
+              <div class="col-md-12">
+                <div *ngFor="let is of issue">
+                  <p><a href={{is?.html_url}}>{{ is?.id }}</a> - {{ is?.title }}</p>
+                  <hr />
+                </div>
+              </div>
+            </div> <!-- /end of issues -->
+          </div>
+        </div>
+      </div>  <!-- /end of card -->
+
+      <div class="card">
+        <div class="card-header" role="tab" id="headingSix">
+          <h5 class="mb-0">
+            <a data-toggle="collapse" data-parent="#accordion" href="#pull-request" aria-expanded="false" aria-controls="pull-request">
+                Pull Requests
+            </a>
+          </h5>
+        </div>
+    
+        <div id="pull-request" class="collapse show" role="tabpanel" aria-labelledby="headingSix">
+          <div class="card-block">
+            <div class="row block-item">
+              <div class="col-md-12">
+                <div *ngFor="let pr of pull">
+                  <div>
+                      <p>{{ pr?.user.login }} - <a href={{pr?.html_url}}>{{ pr?.id }}</a> - {{ pr?.title }}</p>
+                  </div>
+                  <hr />
+                </div>
+              </div>
+            </div> <!-- /end of pullRequests -->
+          </div>
+        </div>
+      </div>  <!-- /end of card -->
+    </div>
+  </div>

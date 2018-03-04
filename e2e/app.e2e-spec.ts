@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('github-api App', () => {
+describe('angular-github-client App', () => {
   let page: AppPage;
 
   beforeEach(() => {
